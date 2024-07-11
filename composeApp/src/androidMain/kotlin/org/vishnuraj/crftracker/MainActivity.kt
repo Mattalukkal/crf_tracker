@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -37,7 +38,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
                 RecyclerView()
-          //  App()
+           //App()
         }
     }
 }
@@ -52,11 +53,12 @@ val CRFIDValue = Typography(
     h6 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Bold,
+        textAlign = TextAlign.Center,
         fontSize = 12.sp
     )
 )
 @Composable
-fun RecyclerView(names : List<String> = List(10){"$it"}){
+fun RecyclerView(names : List<String> = List(20){"$it"}){
     LazyColumn(modifier = Modifier.padding(vertical = 4.dp)){
         items(items = names){ name ->
             ListItem(name = name)
@@ -71,21 +73,69 @@ fun ListItem(name : String){
 
     Surface(color = MaterialTheme.colors.primary,
         modifier = Modifier.padding(vertical = 2.dp, horizontal = 4.dp)){
-
         Column(modifier = Modifier
             .padding(12.dp)
             .fillMaxWidth()) {
-            Row{
-                Column(
-                    modifier = Modifier
-                        .weight(1f)
-                ) {
-                    Text(text = "CRF ID", style = CRFIDLabel.h6)
-                    Text(text = name, style = CRFIDValue.h6)
+            Column(
+                modifier = Modifier
+                    .padding(2.dp)
+                    .fillMaxWidth()
+            ) {
+                Row {
+                    Column(
+                        modifier = Modifier
+                            .weight(1f)
+                    ) {
+                        Text(text = "CRF ID", style = CRFIDLabel.h6)
+                        Text(text = name, style = CRFIDValue.h6)
+                    }
+                    Column(
+                        modifier = Modifier
+                            .weight(1f)
+                    ) {
+                        Text(text = "Target Date", style = CRFIDLabel.h6)
+                        Text(text = name, style = CRFIDValue.h6)
+                    }
+                    Column(
+                        modifier = Modifier
+                            .weight(1f)
+                    ) {
+                        Text(text = "Status", style = CRFIDLabel.h6)
+                        Text(text = name, style = CRFIDValue.h6)
+                    }
                 }
             }
-
+            Column(
+                modifier = Modifier
+                    .padding(2.dp)
+                    .fillMaxWidth()
+            ) {
+                Row {
+                    Column(
+                        modifier = Modifier
+                            .weight(1f)
+                    ) {
+                        Text(text = "Subject", style = CRFIDLabel.h6)
+                        Text(text = name, style = CRFIDValue.h6)
+                    }
+                    Column(
+                        modifier = Modifier
+                            .weight(1f)
+                    ) {
+                        Text(text = "Start date", style = CRFIDLabel.h6)
+                        Text(text = name, style = CRFIDValue.h6)
+                    }
+                    Column(
+                        modifier = Modifier
+                            .weight(1f)
+                    ) {
+                        Text(text = "End date", style = CRFIDLabel.h6)
+                        Text(text = name, style = CRFIDValue.h6)
+                    }
+                }
+            }
         }
+
     }
 }
 
